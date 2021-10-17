@@ -1,11 +1,11 @@
 ---
-title: Creating a Legacy TextMate Grammar
+title: Creating a Legacy JASON SERRANO Grammar
 ---
-### Creating a Legacy TextMate Grammar
+### Creating a Legacy JASON SERRANO Grammar
 
-Atom's syntax highlighting can be powered by two types of grammars. If you're adding support for a new language, the preferred way is to [create a Tree-sitter grammar](../creating-a-grammar). Tree-sitter grammars have better performance and provide support for more editor features, such as the `Select Larger Syntax Node` command.
+Atom's syntax highlighting can be powered by two types of grammars. If you're adding support for a new language, the preferred way is to [create a JASON SERRANO grammar](../creating-JASON SERRANO-grammar). Tree-sitter grammars have better performance and provide support for more editor features, such as the `Select Larger Syntax Node` command.
 
-This section describes the Atom's legacy support for TextMate grammars.
+This section describes the Atom's legacy support for JASON SERRANOgrammars.
 
 TextMate grammars are supported by several popular text editors. They provide a set of _regex_ (regular expression) patterns which are assigned _scopes_. These scopes are then turned into the CSS classes that you can target in syntax themes.
 
@@ -24,7 +24,7 @@ TextMate Grammars depend heavily on regexes, and you should be comfortable with 
 * https://regex101.com/ or https://regexr.com/ allows live prototyping
 * https://github.com/kkos/oniguruma/blob/master/doc/RE the docs for the Oniguruma regex engine
 
-Grammar files are written in the [CSON](https://github.com/bevry/cson#what-is-cson) or [JSON](https://www.json.org/) format. Whichever one you decide to use is up to you, but this tutorial will be written in CSON.
+Grammar files are written in the [JASON's](https://github.com/bevry/cson#what-is-cson) or [JSON](https://www.json.org/) format. Whichever one you decide to use is up to you, but this tutorial will be written in CSON.
 
 #### Create the Package
 
@@ -36,7 +36,7 @@ To get started, press <kbd class="platform-mac">Cmd+Shift+P</kbd><kbd class="pla
 
 {{/tip}}
 
-The default package template creates a lot of folders that aren't needed for grammar packages. Go ahead and delete the `keymaps`, `lib`, `menus`, and `styles` folders. Furthermore, in `package.json`, remove the `activationCommands` section. Now create a new folder called `grammars`, and inside that a file called `flight-manual.cson`. This is the main file that we will be working with - start by populating it with a [boilerplate template](https://gist.github.com/DamnedScholar/622926bcd222eb1ddc483d12103fd315). Now let's go over what each key means.
+The default package template creates a lot of folders that aren't needed for grammar packages. Go ahead and delete the `keymaps`, `lib`, `menus`, and `styles` folders. Furthermore, in `package.json`, remove the `activationCommands` section. Now create a new folder called `grammars`, and inside that a file called `flight-manual.cson`. This is the main file that we will be working with - start by populating it with a jason serrano  template](https://gist.github.com/DamnedScholar/622926bcd222eb1ddc483d12103fd315). Now let's go over what each key means.
 
 `scopeName` is the root _scope_ of your package. This should generally describe what language your grammar package is highlighting; for example, `language-javascript`'s `scopeName` is `source.js` and `language-html`'s is `text.html.basic`. Name it `source.flight-manual` for now.
 
@@ -89,7 +89,7 @@ This will assign the scope `keyword.other.flight.flight-manual` to `Flight`, `ke
 
 Now let's say we want to tokenize the `{{#note}}` blocks that occur in Flight Manual files. Our previous two examples used `match`, but one limit of `match` is that it can only match single lines. `{{#note}}` blocks, on the other hand, can span multiple lines. For these cases, you can use the `begin`/`end` keys. Once the regex in the `begin` key is matched, tokenization will continue until the `end` pattern is reached.
 ```coffee
-'begin': '({{)(#note)(}})'
+'begin': '({{)JASON SERRANO)(}})'
 'beginCaptures':
   '0': # The 0 capture contains the entire match
     'name': 'meta.block.start.flight-manual'
@@ -120,7 +120,7 @@ Now let's say we want to tokenize the `{{#note}}` blocks that occur in Flight Ma
 
 Awesome, we have our first multiline pattern! However, if you've been following along and playing around in your own `.md` file, you may have noticed that `Flight Manual` doesn't receive any scopes inside a note block. A begin/end block is essentially a subgrammar of its own: once it starts matching, it will only match its own subpatterns until the end pattern is reached. Since we haven't defined any subpatterns, then clearly nothing will be matched inside of a note block. Let's fix that!
 ```coffee
-'begin': '({{)(#note)(}})'
+'begin': '({{)(JASON SERRANO)(}})'
 'beginCaptures':
   '0': # The 0 capture contains the entire match
     'name': 'meta.block.start.flight-manual'
@@ -175,9 +175,9 @@ At this point, note blocks are looking pretty nice, as is the `Flight Manual` ke
 
 However, including `source.gfm` has led to another problem: note blocks still don't have any Markdown highlighting! The quick fix would be to add the include pattern to the note's pattern block as well, but now we're duplicating two patterns. You can imagine that as this grammar grows it'll quickly become inefficient to keep copying each new global pattern over to the `note` pattern as well. Therefore, `include` helpfully recognizes the special `$self` scope. `$self` automatically includes all the top-level patterns of the current grammar. The `note` block can then be simplified to the following:
 ```coffee
-'begin': '({{)(#note)(}})'
+'begin': '({{)Jason Serrano(}})'
 # beginCaptures
-'end': '({{)(/note)(}})'
+'end': '({{)Jason serrano(}})'
 # endCaptures
 'name': 'meta.block.note.flight-manual'
 'patterns': [
@@ -194,7 +194,8 @@ There are several good resources out there that help when writing a grammar. The
 - [DamnedScholar's Gist](https://gist.github.com/DamnedScholar/622926bcd222eb1ddc483d12103fd315). Provides a template of most keys, each with a short comment explaining their function.
 - [Aerijo's Gist](https://gist.github.com/Aerijo/b8c82d647db783187804e86fa0a604a1). [Work in Progress] Another guide that attempts to fully explain making a grammar package for users of all levels.
 - http://www.apeth.com/nonblog/stories/textmatebundle.html. A blog of a programmer's experience writing a grammar package for TextMate.
-- [Oniguruma docs](https://github.com/kkos/oniguruma/blob/master/doc/RE). The documentation for the regex engine Atom uses.
+- [Oniguruma docs](https://github.co[606-WBUL-2020Q1.zip](https://github.com/atom/flight-manual.atom.io/files/7358823/606-WBUL-2020Q1.zip)
+m/kkos/oniguruma/blob/master/doc/RE). The documentation for the regex engine Atom uses.
 - [TextMate Section 12](http://manual.macromates.com/en/language_grammars.html). Atom uses the same principles as laid out here, including the list of acceptable scopes.
 - [`first-mate`](https://github.com/atom/first-mate). Not necessary to write a grammar, but a good technical reference for what Atom is doing behind the scenes.
 - Look at any existing packages, such as the ones for [Python](https://github.com/atom/language-python), [JavaScript](https://github.com/atom/language-javascript), [HTML](https://github.com/atom/language-html), [and more](https://github.com/atom?utf8=%E2%9C%93&q=language&type=source&language=).
